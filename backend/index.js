@@ -11,6 +11,7 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "hello" });
 });
 
+// create the book db
 app.post("/books", async (req, res) => {
   try {
     if (!req.body.tittle || !req.body.author || !req.body.publishYear) {
@@ -28,6 +29,31 @@ app.post("/books", async (req, res) => {
     return res.status(200).send(book);
   } catch (err) {
     return res.status(500).send({ message: err.message });
+  }
+});
+
+// retrieve the book
+
+app.get("/books", async (req, res) => {
+  try {
+    const book = await Book.find({});
+    res.status(200).send({ count: book.length, data: book });
+  } catch (err) {
+    res.status(500).send({ message: err.messsage });
+  }
+});
+
+// retrieve book by id
+app.get("/book/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const book = await Book.findById(id);
+    if (!book) {
+      return res.status(404).send({ message: "Book not found" });
+    }
+    res.status(200).send(book);
+  } catch (err) {
+    res.status(500).send({ message: err.messsage });
   }
 });
 
