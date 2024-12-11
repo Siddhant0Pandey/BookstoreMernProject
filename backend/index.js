@@ -57,6 +57,36 @@ app.get("/book/:id", async (req, res) => {
   }
 });
 
+// update the data
+app.put("/book/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const book = await Book.findByIdAndUpdate(id, req.body);
+    if (!book) {
+      return res.status(404).send({ message: "Book not found" });
+    }
+    const updatedBook = await Book.findById(id);
+    // res.status(200).send({ message: "Book  Updated successfully" });
+    res.status(200).send(updatedBook);
+  } catch (err) {
+    res.status(500).send({ message: err.messsage });
+  }
+});
+
+// delete the book
+app.delete("/book/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const book = await Book.findByIdAndDelete(id, req.body);
+    if (!book) {
+      return res.status(404).send({ message: "Book not found" });
+    }
+    res.status(200).send({ message: "Book  Deleted successfully" });
+  } catch (err) {
+    res.status(500).send({ message: err.messsage });
+  }
+});
+
 // Mongoose connnection
 mongoose
   .connect(db_URL)
