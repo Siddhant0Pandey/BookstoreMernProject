@@ -1,14 +1,37 @@
 import express from "express";
 import { PORT, db_URL } from "./config.js";
 import mongoose from "mongoose";
+import { Book } from "./models/books.model.js";
 
 const app = express();
+app.use(express.json());
 
 app.get("/", (req, res) => {
   console.log("getting the reques");
   res.status(200).json({ message: "hello" });
 });
 
+app.post("/books", async (req, res) => {
+  try {
+    if (!req.body.tittle || !req.body.author || !req.body.publishYear) {
+      return res.status(400).send({ message: "Send all the required fields" });
+    }
+
+    const newBook = {
+      tittle: req.body.tittle,
+      author: req.body.author,
+      publishYear: req.body.publishYear,
+    };
+
+    const book = await Book.create(newBook);
+
+    return res.status(200).send(book);
+  } catch (err) {
+    return res.status(500).send({ message: err.message });
+  }
+});
+
+// Mongoose connnection
 mongoose
   .connect(db_URL)
   .then(() => {
