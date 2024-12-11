@@ -9,10 +9,6 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "hello" });
 });
 
-app.listen(PORT, () => {
-  console.log(`Successfully connected to the port : ${PORT}`);
-});
-
 mongoose
   .connect(db_URL)
   .then(() => {
