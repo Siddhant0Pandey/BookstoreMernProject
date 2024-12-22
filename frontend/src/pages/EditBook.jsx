@@ -5,11 +5,14 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
+import MessageBox from "../components/message/MessageBox";
 
 const EditBook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
+
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -31,6 +34,7 @@ const EditBook = () => {
     axios
       .put(`http://localhost:8000/books/${id}`, data)
       .then(() => {
+        setShowMessage(true);
         setLoading(false);
         navigate("/");
       })
@@ -87,6 +91,7 @@ const EditBook = () => {
           Save
         </button>
       </div>
+      {showMessage ? <MessageBox message="edited" /> : ""}
     </div>
   );
 };
