@@ -29,7 +29,7 @@ const ShowBook = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="flex flex-col border-2 border-sky-300 rounded-xl w-fit p-4">
+        <div className="flex flex-col border-2 border-sky-300 rounded-xl w-fit p-4 mt-16 text-left">
           <div className="my-4">
             <span className="font-semibold text-xl mr-4 text-gray-400">
               Id:{" "}

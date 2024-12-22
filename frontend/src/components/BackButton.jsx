@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 function BackButton() {
   return (
-    <div className="flex">
+    <div className="flex ">
       <Link to="/">
-        <BsArrowLeft className="textx-2xl" />
+        <BsArrowLeft className=" bg-slate-600 text-white  text-2xl p-1 rounded-md" />
       </Link>
     </div>
   );

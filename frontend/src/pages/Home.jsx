@@ -27,7 +27,7 @@ const Home = () => {
       <div className="flex justify-between items-center">
         <h1 className="text-3xl my-8">Books List</h1>
         <Link to="/books/create">
-          <MdOutlineAddBox className="text-green-600 text-4xl hover:scale-90" />
+          <MdOutlineAddBox className="text-green-500 text-3xl hover:scale-90 rounded-md" />
         </Link>
       </div>
       {loading ? (
@@ -36,15 +36,21 @@ const Home = () => {
         <table className="w-full border-separate border-spacing-2">
           <thead>
             <tr>
-              <th className="border border-slate-600 rounded-md">No</th>
-              <th className="border border-slate-600 rounded-md">Title</th>
-              <th className="border border-slate-600 rounded-md max:md-hidden">
+              <th className="border border-slate-600 rounded-md bg-orange-400">
+                No
+              </th>
+              <th className="border border-slate-600 rounded-md bg-green-400">
+                Title
+              </th>
+              <th className="border border-slate-600 rounded-md max:md-hidden bg-blue-400">
                 Author
               </th>
-              <th className="border border-slate-600 rounded-md max:md-hidden">
+              <th className="border border-slate-600 rounded-md max:md-hidden bg-cyan-400">
                 Publish Year
               </th>
-              <th className="border border-slate-600 rounded-md">Operations</th>
+              <th className="border border-slate-600 rounded-md bg-purple-400">
+                Operations
+              </th>
             </tr>
           </thead>
           <tbody>
