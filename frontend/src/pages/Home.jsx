@@ -27,7 +27,7 @@ const Home = () => {
       <div className="flex justify-between items-center">
         <h1 className="text-3xl my-8">Books List</h1>
         <Link to="/books/create">
-          <MdOutlineAddBox className="text-sky-800 text-4xl" />
+          <MdOutlineAddBox className="text-green-600 text-4xl hover:scale-90" />
         </Link>
       </div>
       {loading ? (
@@ -64,14 +64,20 @@ const Home = () => {
                 </td>
                 <td className="border border-slate-700 rounded-md text-center ">
                   <div className="flex justify-evenly text-2xl">
-                    <Link to={`/books/details/${books._id}`}>
-                      <BsInfoCircle className="text-green-800" />
+                    <Link
+                      to={`/books/details/${books._id}`}
+                      title="books detail"
+                    >
+                      <BsInfoCircle className="text-blue-800 hover:scale-90" />
                     </Link>
-                    <Link to={`/books/edit/${books._id}`}>
-                      <AiOutlineEdit className="text-yellow-600" />
+                    <Link to={`/books/edit/${books._id}`} title="edit the list">
+                      <AiOutlineEdit className="text-yellow-600 hover:scale-90" />
                     </Link>
-                    <Link to={`/books/delete/${books._id}`}>
-                      <MdOutlineDelete className="text-red-700" />
+                    <Link
+                      to={`/books/delete/${books._id}`}
+                      title="delete the list"
+                    >
+                      <MdOutlineDelete className="text-red-700 hover:scale-90" />
                     </Link>
                   </div>
                 </td>
