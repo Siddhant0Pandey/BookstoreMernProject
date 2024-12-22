@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -5,7 +6,7 @@ import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
 import MessageBox from "../components/message/MessageBox";
 
-const CreateBook = () => {
+const CreateBook = ({ url }) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
@@ -25,7 +26,7 @@ const CreateBook = () => {
     setLoading(true);
 
     axios
-      .post(`http://localhost:8000/books`, data)
+      .post(`${url}/books`, data)
       .then(() => {
         setLoading(false);
         setShowMessage(true);

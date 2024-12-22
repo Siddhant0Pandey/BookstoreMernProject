@@ -7,14 +7,15 @@ import EditBook from "./pages/EditBook";
 import ShowBook from "./pages/ShowBook";
 
 function App() {
+  const url = "https://bookstoremernproject.onrender.com";
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/books/create" element={<CreateBook />} />
-        <Route path="/books/details/:id" element={<ShowBook />} />
-        <Route path="/books/edit/:id" element={<EditBook />} />
-        <Route path="/books/delete/:id" element={<DeleteBook />} />
+        <Route path="/" element={<Home url={url} />} />
+        <Route path="/books/create" element={<CreateBook url={url} />} />
+        <Route path="/books/details/:id" element={<ShowBook url={url} />} />
+        <Route path="/books/edit/:id" element={<EditBook url={url} />} />
+        <Route path="/books/delete/:id" element={<DeleteBook url={url} />} />
       </Routes>
     </>
   );

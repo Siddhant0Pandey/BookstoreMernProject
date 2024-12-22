@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -7,7 +8,7 @@ import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
 import MessageBox from "../components/message/MessageBox";
 
-const EditBook = () => {
+const EditBook = ({ url }) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
@@ -32,7 +33,7 @@ const EditBook = () => {
       return;
     }
     axios
-      .put(`http://localhost:8000/books/${id}`, data)
+      .put(`${url}/books/${id}`, data)
       .then(() => {
         setShowMessage(true);
         setLoading(false);

@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 
-const DeleteBook = () => {
+const DeleteBook = ({ url }) => {
   const [loading, setLoading] = useState(false);
   const [books, setBooks] = useState([]);
   const { id } = useParams();
@@ -25,7 +26,7 @@ const DeleteBook = () => {
   }
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/books/${id}`)
+      .get(`${url}/books/${id}`)
       .then((res) => {
         setBooks(res.data);
         setLoading(false);

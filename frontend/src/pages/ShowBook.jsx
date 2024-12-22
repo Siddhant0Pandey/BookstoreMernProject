@@ -1,17 +1,18 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import BackButton from "../components/BackButton";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Spinner from "../components/Spinner";
 
-const ShowBook = () => {
+const ShowBook = ({ url }) => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/books/${id}`)
+      .get(`${url}/books/${id}`)
       .then((res) => {
         setBooks(res.data);
         setLoading(false);

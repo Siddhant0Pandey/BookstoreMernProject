@@ -3,6 +3,7 @@ import { PORT, db_URL } from "./config.js";
 import mongoose from "mongoose";
 import booksRoute from "./routes/books.routes.js";
 import cors from "cors";
+import "dotenv/config";
 
 const app = express();
 //
