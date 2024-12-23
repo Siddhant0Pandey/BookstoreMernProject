@@ -77,7 +77,7 @@ const CreateBook = ({ url }) => {
         <button
           className="p-2 bg-sky-400 hover:opacity-80"
           onClick={handleSaveBook}
-          disabled={loading} // Disable button while loading
+          disabled={loading}
         >
           Save
         </button>
